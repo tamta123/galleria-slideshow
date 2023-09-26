@@ -13,6 +13,8 @@ interface ArtistItem {
   artist_name: string;
   description: string;
   source: string;
+  gallery: string;
+  totalArtists: number;
 }
 
 const Detail: React.FC = () => {
@@ -26,6 +28,7 @@ const Detail: React.FC = () => {
           `https://gallerianode-production.up.railway.app/artist/${artistId}`
         );
         setArtistData(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -63,7 +66,7 @@ const Detail: React.FC = () => {
       <FooterElement
         name={artistData.name}
         artist_name={artistData.artist_name}
-        artistId={artistId}
+        artistId={artistId as string}
       />
     </Card>
   );

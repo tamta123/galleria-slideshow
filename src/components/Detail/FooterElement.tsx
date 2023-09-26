@@ -5,24 +5,21 @@ import { Link } from "react-router-dom";
 interface FooterElementProps {
   name: string;
   artist_name: string;
-  artistId: number;
-  totalArtists: number;
+  artistId: string;
 }
 
 const FooterElement: React.FC<FooterElementProps> = ({
   name,
   artist_name,
   artistId,
-  totalArtists,
 }) => {
-  const next = artistId + 1;
-  const previous = artistId - 1;
+  const next = parseInt(artistId) + 1;
+  const previous = parseInt(artistId) - 1;
 
-  const isLastArtist = artistId === totalArtists;
-  const isFirstArtist = artistId === 1;
+  const isLastArtist = parseInt(artistId) === 15;
+  const isFirstArtist = parseInt(artistId) === 1;
 
-  const nextArrowOpacity = isLastArtist ? 0.2 : 1;
-  const firstArrowOpacity = isFirstArtist ? 0.2 : 1;
+  console.log(artistId, "artistId");
 
   return (
     <Wrapper>
@@ -32,10 +29,14 @@ const FooterElement: React.FC<FooterElementProps> = ({
       </ArtistInfo>
       <Arrows>
         <Link to={`/Detail/${previous}`}>
-          <Back style={{ opacity: firstArrowOpacity }} />
+          <div style={{ opacity: isFirstArtist ? 0.2 : 1 }}>
+            <Back />
+          </div>
         </Link>
         <Link to={`/Detail/${next}`}>
-          <Next style={{ opacity: nextArrowOpacity }} />
+          <div style={{ opacity: isLastArtist ? 0.2 : 1 }}>
+            <Next />
+          </div>
         </Link>
       </Arrows>
     </Wrapper>
