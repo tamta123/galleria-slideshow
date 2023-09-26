@@ -16,7 +16,7 @@ const Routing = () => {
         }
       />
       <Route
-        path="/Detail"
+        path="/Detail/:artistId"
         element={
           <Suspense fallback={"loading..."}>
             <Detail />

@@ -1,20 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap");
 
-*{
-  margin:0;
+* {
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 :root {
-  --dark:#000000;
-  --dargGrey:#7D7D7D;
-  --lightGrey:#E5E5E5;
-  --veryLightGrey:#F3F3F3;
-  --light:#FFFFFF;
+  --dark: #000000;
+  --dargGrey: #7d7d7d;
+  --lightGrey: #e5e5e5;
+  --veryLightGrey: #f3f3f3;
+  --light: #ffffff;
 }
 
-html,body{
+html,
+body {
   width: 100%;
   height: 100%;
 }

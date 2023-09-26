@@ -1,10 +1,14 @@
 import styled from "styled-components";
 import Routing from "./components/Routing";
+import Header from "./layout/Header";
 
 function App() {
   return (
     <Main>
-      <Routing />
+      <Wrapper>
+        <Header />
+        <Routing />
+      </Wrapper>
     </Main>
   );
 }
@@ -16,3 +20,5 @@ const Main = styled.main`
   width: 100%;
   height: 100%;
 `;
+
+const Wrapper = styled.div``;
