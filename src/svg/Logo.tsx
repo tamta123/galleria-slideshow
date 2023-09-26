@@ -14,11 +14,10 @@ const Logo = () => {
 
 export default Logo;
 
-const attrs = styled.svg.attrs({
+const Svg = styled.svg.attrs({
   xmlns: "http://www.w3.org/2000/svg",
-})``;
-
-const Svg = styled(attrs)`
+  viewBox: "0 0 170 50",
+})`
   width: 113px;
   height: 32px;
   cursor: pointer;

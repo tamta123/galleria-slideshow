@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
-import { Next, Back } from "../../svg";
 import ViewDiv from "../../components/Detail/ViewDiv";
+import FooterElement from "../../components/Detail/FooterElement";
 
 interface ArtistItem {
   id: number;
@@ -44,7 +44,7 @@ const Detail: React.FC = () => {
           <div style={{ height: "auto", width: "327px" }}>
             <Image src={artistData.hero_s} alt={artistData.name} />
           </div>
-          <ViewDiv />
+          <ViewDiv imageSrc={artistData.gallery} />
           <AboutArtist>
             <Name>{artistData.name}</Name>
             <Artist>{artistData.artist_name}</Artist>
@@ -60,16 +60,11 @@ const Detail: React.FC = () => {
           GO TO SOURCE
         </Source>
       </Wrapper>
-      <FooterElement>
-        <ArtistInfo>
-          <FooterName>{artistData.name}</FooterName>
-          <FooterArtist>{artistData.artist_name}</FooterArtist>
-        </ArtistInfo>
-        <Arrows>
-          <Back />
-          <Next />
-        </Arrows>
-      </FooterElement>
+      <FooterElement
+        name={artistData.name}
+        artist_name={artistData.artist_name}
+        artistId={artistId}
+      />
     </Card>
   );
 };
@@ -151,43 +146,4 @@ const Source = styled.a`
   line-height: normal;
   letter-spacing: 1.929px;
   text-decoration-line: underline;
-`;
-
-const FooterElement = styled.footer`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 2px solid #e5e5e5;
-  padding-top: 17px;
-  padding-bottom: 17px;
-  padding-inline: 24px;
-`;
-
-const ArtistInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-`;
-
-const Arrows = styled.div`
-  display: flex;
-  gap: 25px;
-`;
-
-const FooterName = styled.p`
-  color: #000;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-`;
-
-const FooterArtist = styled.p`
-  color: #000;
-  font-family: Libre Baskerville;
-  font-size: 10px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 `;

@@ -6,8 +6,8 @@ const Header = () => {
   return (
     <HeaderElement>
       <Link to="/">
-        <img src="../../public/logo.svg" alt="logo" />
-        {/* <Logo /> */}
+        {/* <img src="../../public/logo.svg" alt="logo" /> */}
+        <Logo />
       </Link>
       <Link to="/Detail" style={{ textDecoration: "none" }}>
         <H2>START SLIDESHOW</H2>

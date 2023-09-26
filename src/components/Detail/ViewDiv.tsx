@@ -51,7 +51,7 @@ const Wrapper = styled.div`
 const ViewImage = styled.p`
   color: #fff;
   text-align: right;
-  font-size: 10px;
+  font-size: 9px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -68,6 +68,7 @@ const ModalOverlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 199;
 `;
 
 const Modal = styled.div`
@@ -76,8 +77,9 @@ const Modal = styled.div`
 `;
 
 const ImageModal = styled.img`
-  max-width: 100%;
-  max-height: 80vh;
+  max-width: 90%;
+  max-height: auto;
+  margin: 0 auto;
 `;
 
 const Close = styled.div`
