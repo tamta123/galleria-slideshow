@@ -16,7 +16,6 @@ interface ArtistItem {
   description: string;
   source: string;
   gallery: string;
-  totalArtists: number;
   next: number;
   previous: number;
 }
@@ -44,7 +43,7 @@ const Detail: React.FC = () => {
   if (data === null) {
     return <div>Loading...</div>;
   }
-  console.log(data, "data");
+  // console.log(data, "data");
 
   const currentIndex = data.findIndex(
     (item) => item.id.toString() === artistId
@@ -93,6 +92,8 @@ const Detail: React.FC = () => {
         isLastArtist={isLastArtist}
         next={next}
         previous={previous}
+        data={data}
+        currentIndex={currentIndex}
       />
     </Card>
   );

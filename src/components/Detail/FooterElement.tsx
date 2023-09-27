@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Next, Back } from "../../svg";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 interface FooterElementProps {
   name: string;
@@ -10,33 +11,54 @@ interface FooterElementProps {
   isLastArtist: number;
   next: number;
   previous: number;
+  data: any[];
+  currentIndex: number;
 }
 
 const FooterElement: React.FC<FooterElementProps> = ({
   name,
   artist_name,
-  artistId,
   next,
   previous,
   isFirstArtist,
   isLastArtist,
+  data,
+  currentIndex,
 }) => {
-  console.log(artistId, "artistId");
+  const [lineLength, setLineLength] = useState<string>("0%");
+
+  useEffect(() => {
+    if (data.length > 0) {
+      const percentage = (currentIndex / (data.length - 1)) * 100;
+      setLineLength(percentage + "%");
+    }
+  }, [currentIndex, data]);
 
   return (
     <Wrapper>
+      <BorderLine style={{ width: lineLength }} />
       <ArtistInfo>
         <FooterName>{name}</FooterName>
         <FooterArtist>{artist_name}</FooterArtist>
       </ArtistInfo>
       <Arrows>
         <Link to={`/Detail/${previous}`}>
-          <div style={{ opacity: isFirstArtist ? 0.2 : 1 }}>
+          <div
+            style={{
+              opacity: isFirstArtist ? 0.2 : 1,
+              pointerEvents: isFirstArtist ? "none" : "auto",
+            }}
+          >
             <Back />
           </div>
         </Link>
         <Link to={`/Detail/${next}`}>
-          <div style={{ opacity: isLastArtist ? 0.2 : 1 }}>
+          <div
+            style={{
+              opacity: isLastArtist ? 0.2 : 1,
+              pointerEvents: isLastArtist ? "none" : "auto",
+            }}
+          >
             <Next />
           </div>
         </Link>
@@ -52,10 +74,11 @@ const Wrapper = styled.footer`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 2px solid #e5e5e5;
-  padding-top: 17px;
-  padding-bottom: 17px;
+  position: relative;
+  padding: 16px;
   padding-inline: 24px;
+  border-top: 1px solid #e5e5e5;
+  overflow: hidden; /* Hide overflow to prevent line from overflowing */
 `;
 
 const ArtistInfo = styled.div`
@@ -84,4 +107,13 @@ const FooterArtist = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+`;
+
+const BorderLine = styled.div`
+  height: 2px;
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: width 0.3s ease; /* Add a transition for smooth width changes */
 `;
