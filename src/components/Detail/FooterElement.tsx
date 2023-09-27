@@ -6,19 +6,21 @@ interface FooterElementProps {
   name: string;
   artist_name: string;
   artistId: string;
+  isFirstArtist: number;
+  isLastArtist: number;
+  next: number;
+  previous: number;
 }
 
 const FooterElement: React.FC<FooterElementProps> = ({
   name,
   artist_name,
   artistId,
+  next,
+  previous,
+  isFirstArtist,
+  isLastArtist,
 }) => {
-  const next = parseInt(artistId) + 1;
-  const previous = parseInt(artistId) - 1;
-
-  const isLastArtist = parseInt(artistId) === 15;
-  const isFirstArtist = parseInt(artistId) === 1;
-
   console.log(artistId, "artistId");
 
   return (

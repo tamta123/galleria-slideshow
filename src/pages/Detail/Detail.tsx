@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import ViewDiv from "../../components/Detail/ViewDiv";
 import FooterElement from "../../components/Detail/FooterElement";
+import { useContext } from "react";
+import { DataContext } from "../../components";
 
 interface ArtistItem {
   id: number;
@@ -15,8 +17,9 @@ interface ArtistItem {
   source: string;
   gallery: string;
   totalArtists: number;
+  next: number;
+  previous: number;
 }
-
 const Detail: React.FC = () => {
   const { artistId } = useParams<{ artistId: string }>();
   const [artistData, setArtistData] = useState<any>(null);
@@ -35,6 +38,25 @@ const Detail: React.FC = () => {
     };
     fetchData();
   }, [artistId]);
+
+  const data = useContext(DataContext);
+
+  if (data === null) {
+    return <div>Loading...</div>;
+  }
+  console.log(data, "data");
+
+  const currentIndex = data.findIndex(
+    (item) => item.id.toString() === artistId
+  );
+  const nextIndex = currentIndex < data.length - 1 ? currentIndex + 1 : -1;
+  const previousIndex = currentIndex > 0 ? currentIndex - 1 : -1;
+
+  const next = nextIndex !== -1 ? data[nextIndex].id : null;
+  const previous = previousIndex !== -1 ? data[previousIndex].id : null;
+
+  const isFirstArtist = currentIndex === 0;
+  const isLastArtist = currentIndex === data.length - 1;
 
   if (!artistData) {
     return <div>Loading...</div>;
@@ -67,6 +89,10 @@ const Detail: React.FC = () => {
         name={artistData.name}
         artist_name={artistData.artist_name}
         artistId={artistId as string}
+        isFirstArtist={isFirstArtist}
+        isLastArtist={isLastArtist}
+        next={next}
+        previous={previous}
       />
     </Card>
   );

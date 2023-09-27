@@ -1,15 +1,18 @@
 import styled from "styled-components";
 import Routing from "./components/Routing";
 import Header from "./layout/Header";
+import { DataProvider } from "./components/DataContext";
 
 function App() {
   return (
-    <Main>
-      <Wrapper>
-        <Header />
-        <Routing />
-      </Wrapper>
-    </Main>
+    <DataProvider>
+      <Main>
+        <Wrapper>
+          <Header />
+          <Routing />
+        </Wrapper>
+      </Main>
+    </DataProvider>
   );
 }
 

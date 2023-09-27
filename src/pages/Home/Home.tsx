@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { DataContext } from "../../components";
 
 interface GalleryItems {
   id: number;
@@ -9,35 +8,23 @@ interface GalleryItems {
   name: string;
   artist_name: string;
 }
-
 const Home: React.FC = () => {
-  const [data, setData] = useState<GalleryItems[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get<GalleryItems[]>(
-          "https://gallerianode-production.up.railway.app/"
-        );
-        setData(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, []);
-
   return (
     <Container>
-      {data.map((item, index) => (
-        <Link to={`/Detail/${item.id}`} key={index}>
-          <Card key={index}>
-            <Image src={item.thumbnail} alt={item.name} />
-            <Name>{item.name}</Name>
-            <Artist>{item.artist_name}</Artist>
-          </Card>
-        </Link>
-      ))}
+      <DataContext.Consumer>
+        {(data: GalleryItems[] | null) =>
+          data &&
+          data.map((item, index) => (
+            <Link to={`/Detail/${item.id}`} key={item.id}>
+              <Card key={index}>
+                <Image src={item.thumbnail} alt={item.name} />
+                <Name>{item.name}</Name>
+                <Artist>{item.artist_name}</Artist>
+              </Card>
+            </Link>
+          ))
+        }
+      </DataContext.Consumer>
     </Container>
   );
 };
