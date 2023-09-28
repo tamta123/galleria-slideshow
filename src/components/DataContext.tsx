@@ -17,11 +17,24 @@ interface GalleryItems {
 // Define the context
 export const DataContext = createContext<GalleryItems[] | null>(null);
 
+interface DataProviderProps {
+  children: ReactNode;
+  initialContext?: GalleryItems[]; // Define initialContext as an optional prop
+}
+
 // Define a provider component
-export const DataProvider: React.FC<{ children: ReactNode }> = ({
+export const DataProvider: React.FC<DataProviderProps> = ({
   children,
+  initialContext = [
+    {
+      id: 0,
+      thumbnail: "",
+      name: "",
+      artist_name: "",
+    },
+  ],
 }) => {
-  const [data, setData] = useState<GalleryItems[] | null>(null);
+  const [data, setData] = useState<GalleryItems[] | null>(initialContext);
 
   useEffect(() => {
     // console.log("Fetching data...");

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { DataContext } from "../../components";
+import { useContext } from "react";
 
 interface GalleryItems {
   id: number;

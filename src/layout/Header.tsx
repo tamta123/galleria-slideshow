@@ -1,17 +1,54 @@
 import styled from "styled-components";
-import { Logo } from "../svg";
 import { Link } from "react-router-dom";
+import { DataContext } from "../components";
+import { useContext, useEffect, useState } from "react";
+import { Logo } from "../svg";
 
 const Header = () => {
+  const [slideshowStarted, setSlideshowStarted] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0); // Initialize currentIndex with 0
+  const data = useContext(DataContext);
+
+  if (data === null) {
+    return <div>Loading...</div>;
+  }
+
+  // Function to start the slideshow
+  const startSlideshow = () => {
+    console.log(data, "data");
+
+    if (!slideshowStarted) {
+      setSlideshowStarted(true);
+      const slideshowInterval = setInterval(() => {
+        // Calculate the index of the next detail page
+        const nextIndex = (currentIndex + 1) % data.length;
+        // Update current index using setCurrentIndex
+        setCurrentIndex(nextIndex);
+      }, 5000);
+
+      return () => {
+        clearInterval(slideshowInterval);
+      };
+    }
+  };
+
+  useEffect(() => {
+    startSlideshow();
+    return () => {
+      // Cleanup effect
+    };
+  }, []);
+
   return (
     <HeaderElement>
       <Link to="/">
-        {/* <img src="../../public/logo.svg" alt="logo" /> */}
         <Logo />
       </Link>
-      <Link to="/Detail" style={{ textDecoration: "none" }}>
-        <H2>START SLIDESHOW</H2>
-      </Link>
+      <H2>
+        <Link to={`/Detail/${currentIndex}`} style={{ textDecoration: "none" }}>
+          START SLIDESHOW
+        </Link>
+      </H2>
     </HeaderElement>
   );
 };

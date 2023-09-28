@@ -22,6 +22,7 @@ interface ArtistItem {
 const Detail: React.FC = () => {
   const { artistId } = useParams<{ artistId: string }>();
   const [artistData, setArtistData] = useState<any>(null);
+  const data = useContext(DataContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,8 +38,6 @@ const Detail: React.FC = () => {
     };
     fetchData();
   }, [artistId]);
-
-  const data = useContext(DataContext);
 
   if (data === null) {
     return <div>Loading...</div>;

@@ -43,24 +43,32 @@ const FooterElement: React.FC<FooterElementProps> = ({
       </ArtistInfo>
       <Arrows>
         <Link to={`/Detail/${previous}`}>
-          <div
+          <button
             style={{
+              background: "none",
+              border: "none",
+              color: "inherit",
+              padding: "0",
               opacity: isFirstArtist ? 0.2 : 1,
-              pointerEvents: isFirstArtist ? "none" : "auto",
             }}
+            disabled={isFirstArtist}
           >
             <Back />
-          </div>
+          </button>
         </Link>
         <Link to={`/Detail/${next}`}>
-          <div
+          <button
             style={{
+              background: "none",
+              border: "none",
+              color: "inherit",
+              padding: "0",
               opacity: isLastArtist ? 0.2 : 1,
-              pointerEvents: isLastArtist ? "none" : "auto",
             }}
+            disabled={isLastArtist}
           >
             <Next />
-          </div>
+          </button>
         </Link>
       </Arrows>
     </Wrapper>
