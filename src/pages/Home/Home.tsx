@@ -10,22 +10,20 @@ interface GalleryItems {
   artist_name: string;
 }
 const Home: React.FC = () => {
+  const data = useContext<GalleryItems[] | null>(DataContext);
+
   return (
     <Container>
-      <DataContext.Consumer>
-        {(data: GalleryItems[] | null) =>
-          data &&
-          data.map((item, index) => (
-            <Link to={`/Detail/${item.id}`} key={item.id}>
-              <Card key={index}>
-                <Image src={item.thumbnail} alt={item.name} />
-                <Name>{item.name}</Name>
-                <Artist>{item.artist_name}</Artist>
-              </Card>
-            </Link>
-          ))
-        }
-      </DataContext.Consumer>
+      {data &&
+        data.map((item, index) => (
+          <Link to={`/Detail/${item.id}`} key={item.id}>
+            <Card key={index}>
+              <Image src={item.thumbnail} alt={item.name} />
+              <Name>{item.name}</Name>
+              <Artist>{item.artist_name}</Artist>
+            </Card>
+          </Link>
+        ))}
     </Container>
   );
 };
