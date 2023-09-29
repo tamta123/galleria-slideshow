@@ -7,8 +7,8 @@ interface FooterElementProps {
   name: string;
   artist_name: string;
   artistId: string;
-  isFirstArtist: number;
-  isLastArtist: number;
+  isFirstArtist: boolean;
+  isLastArtist: boolean;
   next: number;
   previous: number;
   data: any[];

@@ -39,7 +39,7 @@ const Detail: React.FC = () => {
     fetchData();
   }, [artistId]);
 
-  if (data === null) {
+  if (data === null || artistData === null) {
     return <div>Loading...</div>;
   }
 
@@ -49,15 +49,11 @@ const Detail: React.FC = () => {
   const nextIndex = currentIndex < data.length - 1 ? currentIndex + 1 : -1;
   const previousIndex = currentIndex > 0 ? currentIndex - 1 : -1;
 
-  const next = nextIndex !== -1 ? data[nextIndex].id : null;
-  const previous = previousIndex !== -1 ? data[previousIndex].id : null;
+  const next = nextIndex !== -1 ? data[nextIndex].id : -1;
+  const previous = previousIndex !== -1 ? data[previousIndex].id : -1;
 
   const isFirstArtist = currentIndex === 0;
   const isLastArtist = currentIndex === data.length - 1;
-
-  if (!artistData) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <Card key={artistData.id}>
@@ -111,10 +107,7 @@ const Wrapper = styled.div`
   padding: 24px;
   padding-bottom: 67px;
 `;
-const ImageWrapper = styled.div`
-  padding: 24px;
-  padding-bottom: 67px;
-`;
+const ImageWrapper = styled.div``;
 
 const AroundImage = styled.div`
   position: relative;
