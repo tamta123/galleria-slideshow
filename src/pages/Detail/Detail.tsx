@@ -42,7 +42,6 @@ const Detail: React.FC = () => {
   if (data === null) {
     return <div>Loading...</div>;
   }
-  // console.log(data, "data");
 
   const currentIndex = data.findIndex(
     (item) => item.id.toString() === artistId
@@ -64,9 +63,10 @@ const Detail: React.FC = () => {
     <Card key={artistData.id}>
       <Wrapper>
         <AroundImage>
-          <div style={{ height: "auto", width: "327px" }}>
+          <ImageWrapper style={{ height: "auto", width: "327px" }}>
             <Image src={artistData.hero_s} alt={artistData.name} />
-          </div>
+            <ImageTablet src={artistData.hero_l} alt={artistData.name} />
+          </ImageWrapper>
           <ViewDiv imageSrc={artistData.gallery} />
           <AboutArtist>
             <Name>{artistData.name}</Name>
@@ -111,6 +111,10 @@ const Wrapper = styled.div`
   padding: 24px;
   padding-bottom: 67px;
 `;
+const ImageWrapper = styled.div`
+  padding: 24px;
+  padding-bottom: 67px;
+`;
 
 const AroundImage = styled.div`
   position: relative;
@@ -133,6 +137,19 @@ const Image = styled.img`
   object-fit: cover;
   width: 100%;
   height: 100%;
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+const ImageTablet = styled.img`
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
+  }
 `;
 
 const Name = styled.p`

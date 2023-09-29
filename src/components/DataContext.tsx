@@ -37,13 +37,11 @@ export const DataProvider: React.FC<DataProviderProps> = ({
   const [data, setData] = useState<GalleryItems[] | null>(initialContext);
 
   useEffect(() => {
-    // console.log("Fetching data...");
     const fetchData = async () => {
       try {
         const response = await axios.get<GalleryItems[]>(
           "https://gallerianode-production.up.railway.app/"
         );
-        // console.log("Data fetched successfully:", response.data);
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);

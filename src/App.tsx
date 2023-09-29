@@ -1,18 +1,19 @@
 import styled from "styled-components";
 import Routing from "./components/Routing";
 import Header from "./layout/Header";
-import { DataProvider } from "./components/DataContext";
+import { useContext } from "react";
+import { DataContext } from "./components/DataContext";
 
 function App() {
+  const data = useContext(DataContext);
+
   return (
-    <DataProvider>
-      <Main>
-        <Wrapper>
-          <Header />
-          <Routing />
-        </Wrapper>
-      </Main>
-    </DataProvider>
+    <Main>
+      <Wrapper>
+        {data && <Header />}
+        <Routing />
+      </Wrapper>
+    </Main>
   );
 }
 

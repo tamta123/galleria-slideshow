@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { DataContext } from "../../components";
 import { useContext } from "react";
 
@@ -31,13 +31,39 @@ const Home: React.FC = () => {
 export default Home;
 
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1;
+  display: flex;
   gap: 24px;
   padding: 24px;
+  flex-direction: column;
+  justify-content: center;
+  @media (min-width: 768px) {
+    /* flex-direction: row; */
+    flex-wrap: wrap;
+    max-height: 3300px;
+  }
+  @media (min-width: 1440px) {
+    max-height: 1500px;
+  }
 `;
+
+const Link = styled(RouterLink)`
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  @media (min-width: 768px) {
+    width: 48%;
+  }
+  @media (min-width: 1440px) {
+    width: 22%;
+  }
+`;
+
 const Card = styled.div`
   position: relative;
+
+  @media (min-width: 768px) {
+  }
 `;
 
 const Image = styled.img`

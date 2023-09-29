@@ -1,52 +1,62 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { DataContext } from "../components";
 import { useContext, useEffect, useState } from "react";
 import { Logo } from "../svg";
 
 const Header = () => {
-  const [slideshowStarted, setSlideshowStarted] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0); // Initialize currentIndex with 0
   const data = useContext(DataContext);
+  const [slideshowStarted, setSlideshowStarted] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(1);
+  const navigate = useNavigate();
 
   if (data === null) {
     return <div>Loading...</div>;
   }
 
-  // Function to start the slideshow
-  const startSlideshow = () => {
-    console.log(data, "data");
+  const toggleSlideshow = () => {
+    setSlideshowStarted((prev) => !prev);
+  };
+  const nextIndex = currentIndex + 1;
 
-    if (!slideshowStarted) {
-      setSlideshowStarted(true);
+  useEffect(() => {
+    if (slideshowStarted) {
       const slideshowInterval = setInterval(() => {
-        // Calculate the index of the next detail page
-        const nextIndex = (currentIndex + 1) % data.length;
-        // Update current index using setCurrentIndex
+        console.log(currentIndex, "currentIndex");
+        console.log(nextIndex, "nextIndex");
         setCurrentIndex(nextIndex);
-      }, 5000);
+
+        if (nextIndex >= data.length) {
+          setCurrentIndex(1);
+        }
+
+        // Move navigate() call here
+        navigate(`/Detail/${nextIndex}`);
+      }, 2000);
 
       return () => {
         clearInterval(slideshowInterval);
       };
     }
-  };
+  }, [slideshowStarted, currentIndex, data, navigate]);
 
-  useEffect(() => {
-    startSlideshow();
-    return () => {
-      // Cleanup effect
-    };
-  }, []);
+  const stopSlideshowAndNavigateHome = () => {
+    setSlideshowStarted(false);
+    navigate("/");
+  };
 
   return (
     <HeaderElement>
-      <Link to="/">
+      <Link to="/" onClick={stopSlideshowAndNavigateHome}>
         <Logo />
       </Link>
       <H2>
-        <Link to={`/Detail/${currentIndex}`} style={{ textDecoration: "none" }}>
-          START SLIDESHOW
+        <Link
+          to={`/Detail/${currentIndex}`}
+          style={{ textDecoration: "none", color: "#7d7d7d" }}
+          onClick={toggleSlideshow}
+        >
+          {slideshowStarted ? "STOP SLIDESHOW" : "START SLIDESHOW"}
         </Link>
       </H2>
     </HeaderElement>
@@ -65,7 +75,6 @@ const HeaderElement = styled.header`
 `;
 
 const H2 = styled.h2`
-  color: #7d7d7d;
   text-align: right;
   font-size: 9px;
   font-style: normal;
