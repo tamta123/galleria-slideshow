@@ -81,4 +81,8 @@ const H2 = styled.h2`
   font-weight: 700;
   line-height: normal;
   letter-spacing: 1.929px;
+  @media (min-width: 768px) {
+    font-size: 12px;
+    letter-spacing: 2.571px;
+  }
 `;

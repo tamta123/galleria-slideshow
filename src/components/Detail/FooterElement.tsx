@@ -87,6 +87,10 @@ const Wrapper = styled.footer`
   padding-inline: 24px;
   border-top: 1px solid #e5e5e5;
   overflow: hidden; /* Hide overflow to prevent line from overflowing */
+  @media (min-width: 768px) {
+    padding: 25px;
+    padding-inline: 41px;
+  }
 `;
 
 const ArtistInfo = styled.div`
@@ -106,6 +110,9 @@ const FooterName = styled.p`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
 `;
 
 const FooterArtist = styled.p`
@@ -115,6 +122,9 @@ const FooterArtist = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  @media (min-width: 768px) {
+    font-size: 13px;
+  }
 `;
 
 const BorderLine = styled.div`

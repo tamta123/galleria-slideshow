@@ -16,7 +16,7 @@ const ViewDiv: React.FC<ViewDivProps> = ({ imageSrc }) => {
     setModalOpen(false);
   };
   return (
-    <div>
+    <>
       <Wrapper onClick={openModal}>
         <View />
         <ViewImage>VIEW IMAGE</ViewImage>
@@ -29,7 +29,7 @@ const ViewDiv: React.FC<ViewDivProps> = ({ imageSrc }) => {
           </Modal>
         </ModalOverlay>
       )}
-    </div>
+    </>
   );
 };
 
@@ -46,6 +46,10 @@ const Wrapper = styled.div`
   position: absolute;
   top: 16px;
   left: 16px;
+  @media (min-width: 768px) {
+    bottom: 16px;
+    top: 504px;
+  }
 `;
 
 const ViewImage = styled.p`

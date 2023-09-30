@@ -58,27 +58,32 @@ const Detail: React.FC = () => {
   return (
     <Card key={artistData.id}>
       <Wrapper>
-        <AroundImage>
-          <ImageWrapper style={{ height: "auto", width: "327px" }}>
-            <Image src={artistData.hero_s} alt={artistData.name} />
-            <ImageTablet src={artistData.hero_l} alt={artistData.name} />
-          </ImageWrapper>
-          <ViewDiv imageSrc={artistData.gallery} />
-          <AboutArtist>
-            <Name>{artistData.name}</Name>
-            <Artist>{artistData.artist_name}</Artist>
-          </AboutArtist>
-        </AroundImage>
-        <Photo src={artistData.artist_photo} alt={artistData.artist_name} />
-        <Description>{artistData.description}</Description>
-        <Source
-          href={artistData.source}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GO TO SOURCE
-        </Source>
+        <IntroDiv>
+          <AroundImage>
+            <ImageWrapper>
+              <Image src={artistData.hero_s} alt={artistData.name} />
+              <ImageTablet src={artistData.hero_l} alt={artistData.name} />
+            </ImageWrapper>
+            <ViewDiv imageSrc={artistData.gallery} />
+            <AboutArtist>
+              <Name>{artistData.name}</Name>
+              <Artist>{artistData.artist_name}</Artist>
+            </AboutArtist>
+          </AroundImage>
+          <Photo src={artistData.artist_photo} alt={artistData.artist_name} />
+        </IntroDiv>
+        <DescriptionDiv>
+          <Description>{artistData.description}</Description>
+          <Source
+            href={artistData.source}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GO TO SOURCE
+          </Source>
+        </DescriptionDiv>
       </Wrapper>
+
       <FooterElement
         name={artistData.name}
         artist_name={artistData.artist_name}
@@ -104,9 +109,40 @@ const Card = styled.div`
 `;
 
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   padding: 24px;
-  padding-bottom: 67px;
+  padding-bottom: 68px;
+  @media (min-width: 768px) {
+    padding: 40px;
+    align-items: center;
+  }
+  @media (min-width: 1440px) {
+    flex-direction: row;
+    padding: 100px 40px 75px 40px;
+    gap: 18%;
+  }
 `;
+
+const IntroDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 100%;
+  margin-bottom: 54px;
+  align-items: flex-start;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+  }
+  @media (min-width: 1440px) {
+    width: auto;
+    align-items: flex-end;
+    margin-bottom: 0;
+  }
+`;
+
 const ImageWrapper = styled.div``;
 
 const AroundImage = styled.div`
@@ -119,11 +155,23 @@ const AboutArtist = styled.div`
   flex-direction: column;
   gap: 11px;
   height: auto;
-  width: 280px;
+  /* width: 280px; */
   bottom: -54px;
   background-color: white;
   z-index: 99;
   position: absolute;
+  @media (min-width: 768px) {
+    width: 445px;
+    top: 0;
+    left: 243px;
+    height: 250px;
+    padding: 0px 0px 67px 65px;
+    gap: 25px;
+  }
+  @media (min-width: 768px) {
+    top: 0;
+    left: 410px;
+  }
 `;
 
 const Image = styled.img`
@@ -137,8 +185,8 @@ const Image = styled.img`
 
 const ImageTablet = styled.img`
   object-fit: cover;
-  width: 100%;
-  height: 100%;
+  width: 475px;
+  height: auto;
   display: none;
   @media (min-width: 768px) {
     display: block;
@@ -151,13 +199,26 @@ const Name = styled.p`
   font-style: normal;
   font-weight: 700;
   line-height: 29px;
+  @media (min-width: 768px) {
+    font-size: 56px;
+    line-height: 64px;
+    width: 80%;
+  }
 `;
 
 const Photo = styled.img`
   height: 64px;
   width: 64px;
-  margin-bottom: 54px;
+  /* margin-bottom: 54px; */
   margin-top: 54px;
+  @media (min-width: 768px) {
+    /* margin-top: 250px; */
+    height: 128px;
+    width: 128px;
+  }
+  @media (min-width: 1440px) {
+    margin-top: 64px;
+  }
 `;
 
 const Artist = styled.p`
@@ -167,6 +228,16 @@ const Artist = styled.p`
   font-weight: 400;
   line-height: normal;
 `;
+const DescriptionDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 768px) {
+    width: 67%;
+  }
+  @media (min-width: 1440px) {
+    width: 30%;
+  }
+`;
 
 const Description = styled.div`
   color: #7d7d7d;
@@ -174,7 +245,7 @@ const Description = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: 28px;
-  margin-bottom: 64px;
+  padding-bottom: 68px;
 `;
 
 const Source = styled.a`
