@@ -21,5 +21,9 @@ const Svg = styled.svg.attrs({
   width: 169.56px;
   height: 48px;
   flex-shrink: 0;
+  display: none;
   cursor: pointer;
+  @media (min-width: 1440px) {
+    display: block;
+  }
 `;

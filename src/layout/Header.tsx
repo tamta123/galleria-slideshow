@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { DataContext } from "../components";
 import { useContext, useEffect, useState } from "react";
-import { Logo } from "../svg";
+import { Logo, LogoDesktop } from "../svg";
 
 const Header = () => {
   const data = useContext(DataContext);
@@ -49,10 +49,8 @@ const Header = () => {
     <HeaderElement>
       <Link to="/" onClick={stopSlideshowAndNavigateHome}>
         <Logo />
-      </Link>
-      {/* <Link to="/" onClick={stopSlideshowAndNavigateHome}>
         <LogoDesktop />
-      </Link> */}
+      </Link>
       <H2>
         <Link
           to={`/Detail/${currentIndex}`}

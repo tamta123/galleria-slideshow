@@ -128,7 +128,7 @@ const FooterArtist = styled.p`
 `;
 
 const BorderLine = styled.div`
-  height: 2px;
+  height: 1px;
   background-color: #000;
   position: absolute;
   top: 0;

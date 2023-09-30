@@ -146,7 +146,7 @@ const IntroDiv = styled.div`
 
 const ImageWrapper = styled.div`
   min-width: 327px;
-  min-height: auto;
+  min-height: 327px;
   @media (min-width: 768px) {
     min-width: 475px;
     min-height: 560px;
@@ -163,7 +163,6 @@ const AboutArtist = styled.div`
   flex-direction: column;
   gap: 11px;
   height: auto;
-  /* width: 280px; */
   bottom: -54px;
   background-color: white;
   z-index: 99;

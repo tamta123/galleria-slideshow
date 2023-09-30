@@ -46,9 +46,13 @@ const Wrapper = styled.div`
   position: absolute;
   top: 16px;
   left: 16px;
+  cursor: pointer;
   @media (min-width: 768px) {
     bottom: 16px;
     top: 504px;
+    /* :hover {
+      opacity: 0.2522;
+    } */
   }
 `;
 
