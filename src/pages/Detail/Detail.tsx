@@ -144,7 +144,14 @@ const IntroDiv = styled.div`
   }
 `;
 
-const ImageWrapper = styled.div``;
+const ImageWrapper = styled.div`
+  min-width: 327px;
+  min-height: auto;
+  @media (min-width: 768px) {
+    min-width: 475px;
+    min-height: 560px;
+  }
+`;
 
 const AroundImage = styled.div`
   position: relative;
@@ -203,7 +210,7 @@ const Name = styled.p`
   @media (min-width: 768px) {
     font-size: 56px;
     line-height: 64px;
-    width: 80%;
+    width: 90%;
   }
 `;
 
