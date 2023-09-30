@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { DataContext } from "../components";
 import { useContext, useEffect, useState } from "react";
-import { Logo, LogoDesktop } from "../svg";
+import { Logo } from "../svg";
 
 const Header = () => {
   const data = useContext(DataContext);
