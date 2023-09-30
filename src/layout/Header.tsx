@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { DataContext } from "../components";
 import { useContext, useEffect, useState } from "react";
-import { Logo } from "../svg";
+import { Logo, LogoDesktop } from "../svg";
 
 const Header = () => {
   const data = useContext(DataContext);
@@ -50,6 +50,9 @@ const Header = () => {
       <Link to="/" onClick={stopSlideshowAndNavigateHome}>
         <Logo />
       </Link>
+      {/* <Link to="/" onClick={stopSlideshowAndNavigateHome}>
+        <LogoDesktop />
+      </Link> */}
       <H2>
         <Link
           to={`/Detail/${currentIndex}`}
@@ -72,6 +75,9 @@ const HeaderElement = styled.header`
   align-items: center;
   padding: 24px;
   border-bottom: 2px solid #e5e5e5;
+  @media (min-width: 1440px) {
+    padding: 40px;
+  }
 `;
 
 const H2 = styled.h2`
@@ -84,5 +90,12 @@ const H2 = styled.h2`
   @media (min-width: 768px) {
     font-size: 12px;
     letter-spacing: 2.571px;
+  }
+`;
+
+const Link = styled(RouterLink)`
+  @media (min-width: 768px) {
+  }
+  @media (min-width: 1440px) {
   }
 `;

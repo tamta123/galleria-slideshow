@@ -121,6 +121,7 @@ const Wrapper = styled.div`
     flex-direction: row;
     padding: 100px 40px 75px 40px;
     gap: 18%;
+    margin-bottom: 75px;
   }
 `;
 
@@ -217,7 +218,7 @@ const Photo = styled.img`
     width: 128px;
   }
   @media (min-width: 1440px) {
-    margin-top: 64px;
+    margin-bottom: -68px;
   }
 `;
 
