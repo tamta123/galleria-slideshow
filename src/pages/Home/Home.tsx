@@ -18,6 +18,7 @@ const Home: React.FC = () => {
         data.map((item, index) => (
           <Link to={`/Detail/${item.id}`} key={item.id}>
             <Card key={index}>
+              <Hover></Hover>
               <Image src={item.thumbnail} alt={item.name} />
               <Name>{item.name}</Name>
               <Artist>{item.artist_name}</Artist>
@@ -63,8 +64,28 @@ const Link = styled(RouterLink)`
   }
 `;
 
+const Hover = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0.5) 100%
+    ),
+    url(<path-to-image>) lightgray 50% / cover no-repeat;
+  z-index: 999;
+  display: none;
+`;
+
 const Card = styled.div`
   position: relative;
+  &:hover {
+    ${Hover} {
+      display: block;
+      opacity: 0.5;
+    }
+  }
 
   @media (min-width: 768px) {
   }

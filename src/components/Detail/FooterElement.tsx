@@ -86,7 +86,7 @@ const Wrapper = styled.footer`
   padding: 16px;
   padding-inline: 24px;
   border-top: 1px solid #e5e5e5;
-  overflow: hidden; /* Hide overflow to prevent line from overflowing */
+  overflow: hidden;
   @media (min-width: 768px) {
     padding: 25px;
     padding-inline: 41px;
