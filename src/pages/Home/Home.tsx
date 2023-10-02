@@ -45,6 +45,9 @@ const Container = styled.div`
   @media (min-width: 1440px) {
     max-height: 1600px;
   }
+  @media (min-width: 1800px) {
+    max-height: 2000px;
+  }
 `;
 
 const Link = styled(RouterLink)`

@@ -32,7 +32,7 @@ const Header = () => {
 
         // Move navigate() call here
         navigate(`/Detail/${nextIndex}`);
-      }, 2000);
+      }, 8000);
 
       return () => {
         clearInterval(slideshowInterval);

@@ -20,6 +20,7 @@ const ViewDiv: React.FC<ViewDivProps> = ({ imageSrc }) => {
       <Wrapper onClick={openModal}>
         <View />
         <ViewImage>VIEW IMAGE</ViewImage>
+        <ViewImage2>VIEW IMAGE</ViewImage2>
       </Wrapper>
       {modalOpen && (
         <ModalOverlay>
@@ -47,12 +48,13 @@ const Wrapper = styled.div`
   top: 16px;
   left: 16px;
   cursor: pointer;
+  transition: opacity 0.3s ease;
+  &:hover {
+    opacity: 0.2522;
+  }
   @media (min-width: 768px) {
     bottom: 16px;
     top: 504px;
-    /* :hover {
-      opacity: 0.2522;
-    } */
   }
 `;
 
@@ -64,6 +66,17 @@ const ViewImage = styled.p`
   font-weight: 700;
   line-height: normal;
   letter-spacing: 2.143px;
+`;
+
+const ViewImage2 = styled.p`
+  color: #fff;
+  text-align: right;
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 2.143px;
+  display: none;
 `;
 
 const ModalOverlay = styled.div`
