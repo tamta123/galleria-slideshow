@@ -50,7 +50,7 @@ const Wrapper = styled.div`
   cursor: pointer;
   transition: opacity 0.3s ease;
   &:hover {
-    opacity: 0.2522;
+    background: #00000066;
   }
   @media (min-width: 768px) {
     bottom: 16px;

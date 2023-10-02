@@ -7,7 +7,7 @@ import { Logo, LogoDesktop } from "../svg";
 const Header = () => {
   const data = useContext(DataContext);
   const [slideshowStarted, setSlideshowStarted] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const navigate = useNavigate();
 
   if (data === null) {
@@ -22,17 +22,14 @@ const Header = () => {
   useEffect(() => {
     if (slideshowStarted) {
       const slideshowInterval = setInterval(() => {
-        console.log(currentIndex, "currentIndex");
-        console.log(nextIndex, "nextIndex");
         setCurrentIndex(nextIndex);
 
         if (nextIndex >= data.length) {
-          setCurrentIndex(1);
+          setCurrentIndex(0);
         }
 
-        // Move navigate() call here
         navigate(`/Detail/${nextIndex}`);
-      }, 8000);
+      }, 2000);
 
       return () => {
         clearInterval(slideshowInterval);

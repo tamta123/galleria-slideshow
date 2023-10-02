@@ -216,10 +216,8 @@ const Name = styled.p`
 const Photo = styled.img`
   height: 64px;
   width: 64px;
-  /* margin-bottom: 54px; */
   margin-top: 54px;
   @media (min-width: 768px) {
-    /* margin-top: 250px; */
     height: 128px;
     width: 128px;
   }

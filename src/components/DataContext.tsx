@@ -8,15 +8,13 @@ interface GalleryItems {
   artist_name: string;
 }
 
-// Define the context
 export const DataContext = createContext<GalleryItems[] | null>(null);
 
 interface DataProviderProps {
   children: ReactNode;
-  initialContext?: GalleryItems[]; // Define initialContext as an optional prop
+  initialContext?: GalleryItems[];
 }
 
-// Define a provider component
 export const DataProvider: React.FC<DataProviderProps> = ({
   children,
   initialContext = [

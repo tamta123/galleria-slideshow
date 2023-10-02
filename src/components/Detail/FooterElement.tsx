@@ -133,5 +133,5 @@ const BorderLine = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  transition: width 0.3s ease; /* Add a transition for smooth width changes */
+  transition: width 0.3s ease;
 `;
